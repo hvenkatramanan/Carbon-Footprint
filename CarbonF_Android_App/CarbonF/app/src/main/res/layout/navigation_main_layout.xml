@@ -7,43 +7,45 @@
     android:layout_height="match_parent"
     android:weightSum="1">
 
-    <RelativeLayout
+    <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:backgroundTint="@android:color/darker_gray"
-        android:layout_height="55dp">
+        android:layout_height="wrap_content">
 
         <TextView
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/textView1"
+            android:layout_weight="0.64"
             android:text="@string/from"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:textSize="24sp"
             android:textAlignment="textStart"
+            android:paddingTop="10dp"
+            android:paddingLeft="10dp"
             android:textStyle="normal|bold"
-            android:gravity="center_vertical"
-            android:layout_width="74dp" />
+            android:width="50dp" />
 
-        <fragment
-            android:layout_width="250dp"
-            android:layout_height="match_parent"
-            android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
-            android:id="@+id/fragment_from"
-            android:layout_weight="0.01"
-            android:layout_marginLeft="0dp"
-            android:layout_alignParentTop="true"
-            android:layout_toStartOf="@+id/getLocationButton" />
+        <AutoCompleteTextView
+            android:text=""
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/autoCompleteTextView_from"
+            android:maxLines="1"
+            android:layout_weight="1.07"
+            android:ems="10">
+        <requestFocus />
+        </AutoCompleteTextView>
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@android:drawable/ic_menu_mylocation"
             android:id="@+id/getLocationButton"
-            android:backgroundTint="@android:color/holo_green_light"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true" />
+            android:backgroundTint="@android:color/holo_green_light" />
 
-    </RelativeLayout>
+    </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
