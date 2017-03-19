@@ -34,5 +34,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        LocationUtils.startLocationUpdates(this);
     }
 }

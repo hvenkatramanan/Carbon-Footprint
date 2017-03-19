@@ -3,42 +3,47 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
+    android:backgroundTint="@android:color/darker_gray"
     android:layout_height="match_parent"
     android:weightSum="1">
 
-    <LinearLayout
+    <RelativeLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:backgroundTint="@android:color/darker_gray"
+        android:layout_height="55dp">
 
         <TextView
-            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/textView1"
-            android:layout_weight="0.20"
             android:text="@string/from"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:textSize="24sp"
             android:textAlignment="textStart"
-            android:paddingTop="10dp"
-            android:paddingLeft="10dp"
-            android:textColor="@android:color/holo_blue_dark" />
+            android:textStyle="normal|bold"
+            android:gravity="center_vertical"
+            android:layout_width="74dp" />
 
-        <AutoCompleteTextView
-            android:text=""
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/autoCompleteTextView1"
-            android:layout_weight="1"
-            android:outlineProvider="background" />
+        <fragment
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+            android:id="@+id/fragment_from"
+            android:layout_weight="0.01"
+            android:layout_marginLeft="0dp"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/getLocationButton" />
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@android:drawable/ic_menu_mylocation"
-            android:id="@+id/imageButton" />
+            android:id="@+id/getLocationButton"
+            android:backgroundTint="@android:color/holo_green_light"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true" />
 
-    </LinearLayout>
+    </RelativeLayout>
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -48,22 +53,128 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/textView2"
-            android:layout_weight="0.29"
+            android:layout_weight="0.11"
             android:text="@string/to"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:textSize="24sp"
             android:textAlignment="textStart"
             android:paddingTop="10dp"
             android:paddingLeft="10dp"
-            android:textColor="@android:color/holo_blue_dark" />
+            android:textStyle="normal|bold"
+            android:width="50dp" />
 
         <AutoCompleteTextView
             android:text=""
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/autoCompleteTextView2"
-            android:layout_weight="1.22"
-            android:outlineProvider="bounds" />
+            android:id="@+id/autoCompleteTextView_to"
+            android:layout_weight="1.07"
+            android:outlineProvider="bounds"
+            android:scrollHorizontally="true"
+            android:maxLines="1" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@android:drawable/ic_menu_send"
+            android:id="@+id/sendButton"
+            android:backgroundTint="@android:color/holo_green_light" />
 
     </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/linearLayout_results"
+        android:weightSum="1">
+
+        <TextView
+            android:text="Travel Time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_travelTime"
+            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
+            android:textAlignment="center"
+            android:textStyle="normal|bold"
+            android:textAllCaps="false"
+            android:fontFamily="sans-serif"
+            android:paddingTop="25dp" />
+
+        <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="93dp"
+            android:weightSum="1">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/ic_directions_car_black_24dp"
+                android:id="@+id/imageView"
+                android:layout_weight="0.15"
+                android:layout_marginRight="250dp"
+                android:layout_marginLeft="50dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/car_timing"
+                android:layout_marginLeft="175dp"
+                android:layout_marginRight="50dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                android:textSize="24sp"
+                android:textAlignment="center"
+                android:layout_centerHorizontal="false"
+                android:gravity="center_vertical"
+                android:textAllCaps="false" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="93dp"
+            android:weightSum="1">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/ic_directions_subway_black_24dp"
+                android:id="@+id/imageView2"
+                android:layout_weight="0.15"
+                android:layout_marginRight="250dp"
+                android:layout_marginLeft="50dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/bus_timing"
+                android:layout_marginLeft="175dp"
+                android:layout_marginRight="50dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                android:textSize="24sp"
+                android:textAlignment="center"
+                android:gravity="center_vertical"
+                android:textAllCaps="false" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/textView_recommendation"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:text=""
+            android:textAlignment="center"
+            android:textStyle="normal|bold"
+            android:layout_marginTop="25dp" />
+
+
+    </LinearLayout>
+
 </LinearLayout>
