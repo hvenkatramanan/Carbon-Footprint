@@ -369,7 +369,7 @@ public class NavigationActivity extends AppCompatActivity implements AdapterView
                         if(!carDone) {
                             carDone=true;
                             car_time = Integer.parseInt(firstword);
-                            car_time_tv.setText(firstword);
+                            car_time_tv.setText(duration);
                         }
                         else{
                             bus_time = Integer.parseInt(firstword);
@@ -377,11 +377,11 @@ public class NavigationActivity extends AppCompatActivity implements AdapterView
                             carDone = false;
                             if(bus_time - car_time < 10){
                                 recommendation_tv.setText("We recommend taking the public transit. You can reduce "
-                                        + dis +" Ton CO2 emission");
+                                        + dis +" Ton CO2 emission.");
                             }else
                             {
-                                recommendation_tv.setText("Consider taking the public transit to help reduce "
-                                        +dis+" Ton CO2 emission");
+                                recommendation_tv.setText("Please consider taking the public transit to help reduce "
+                                        +dis+" Ton CO2 emission. The Earth Thanks You!");
                             }
                         }
                         continue;
